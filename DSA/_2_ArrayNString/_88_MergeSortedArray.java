@@ -9,7 +9,8 @@ public class _88_MergeSortedArray {
         //int[] nums1 = {1,2,6,0,0,0};
         int[] nums2 = {1,2,3};
         //int[] nums2 = {2,3,5};
-        merge(nums1, 3, nums2, 3);
+        //merge(nums1, 3, nums2, 3);
+        mergeUsing2Pointers(nums1, 3, nums2, 3);
         for (int num : nums1) {
             System.out.println(num);
         }
@@ -23,22 +24,19 @@ public class _88_MergeSortedArray {
     }
 
     private static void mergeUsing2Pointers(int[] nums1, int m, int[] nums2, int n) {
-        int[] nums1Copy = nums1;
+        int k = m + n -1;
         m -= 1;
         n -= 1;
-        for (int k = nums1.length-1; k >=0; k--) {
-            if(m < 0){
-                nums1[k] = nums2[n--];
-            }
-            else if(n < 0){
-                nums1[k] = nums1Copy[m--];
-            }
-            else if(nums1Copy[m] <= nums2[n]){
-                nums1[k] = nums2[n--];
+        while(m >= 0 && n >= 0){
+            if(nums1[m] <= nums2[n]){
+                nums1[k--] = nums2[n--];
             }
             else{
-                nums1[k] = nums1Copy[m--];
+                nums1[k--] = nums1[m--];
             }
+        }
+        while(n >= 0){
+            nums1[k--] = nums2[n--];
         }
     }
 
