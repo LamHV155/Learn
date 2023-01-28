@@ -6,7 +6,7 @@ package DSA._2_ArrayNString;
 public class _88_MergeSortedArray {
     public static void main(String[] args) {
         int[] nums1 = {4,5,6,0,0,0};
-        //int[] nums1 = {1,2,6,0};
+        //int[] nums1 = {1,2,6,0,0,0};
         int[] nums2 = {1,2,3};
         //int[] nums2 = {2,3,5};
         merge(nums1, 3, nums2, 3);
@@ -19,6 +19,26 @@ public class _88_MergeSortedArray {
         for (int num : nums2) {
             insert(num, nums1, m);
             m++;
+        }
+    }
+
+    private static void mergeUsing2Pointers(int[] nums1, int m, int[] nums2, int n) {
+        int[] nums1Copy = nums1;
+        m -= 1;
+        n -= 1;
+        for (int k = nums1.length-1; k >=0; k--) {
+            if(m < 0){
+                nums1[k] = nums2[n--];
+            }
+            else if(n < 0){
+                nums1[k] = nums1Copy[m--];
+            }
+            else if(nums1Copy[m] <= nums2[n]){
+                nums1[k] = nums2[n--];
+            }
+            else{
+                nums1[k] = nums1Copy[m--];
+            }
         }
     }
 
