@@ -6,12 +6,15 @@ package DSA._2_ArrayNString;
 public class _88_MergeSortedArray {
     public static void main(String[] args) {
         int[] nums1 = {4,5,6,0,0,0};
-        //int[] nums1 = {1,2,6,0,0,0};
+        int[] nums11 = {1,2,6,0,0,0};
         int[] nums2 = {1,2,3};
-        //int[] nums2 = {2,3,5};
-        //merge(nums1, 3, nums2, 3);
+        int[] nums22 = {2,3,5};
+        merge(nums11, 3, nums22, 3);
         mergeUsing2Pointers(nums1, 3, nums2, 3);
         for (int num : nums1) {
+            System.out.println(num);
+        }
+        for (int num : nums11) {
             System.out.println(num);
         }
     }
